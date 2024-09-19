@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dynamic Resume</title>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css"
+      integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <section class="input-sec">
+        <div class="container">
+            <form action="" class="cv-form" id="cv-form">
+                <div class="form-div">
+                        <div class="title">
+                            <h3>Personal Information</h3>
+                        </div>
+                        <div class="box personal">
+                            <div class="col3">
+                                <div class="form-elem">
+                                    <label class="form-label">First Name</label>
+                                    <input type="text" name="firstname" class="input firstname" id="username" placeholder="e.g Fiza" onkeyup="GenerateCV()">
+                                </div>
+                                <div class="form-elem">
+                                    <label class="form-label">Last Name</label>
+                                    <input type="text" name="lastname" class="input lastname"placeholder="e.g Rafakat" onkeyup="GenerateCV()">
+                                </div>
+                                <div class="form-elem">
+                                  <label class="form-label">Designation</label>
+                                  <input type="text" name="designation" class="input designation" placeholder="e.g CA" onkeyup="GenerateCV()">
+                              </div>
+                            </div>
+                            <div class="col2"> 
+                                <div class="form-elem">
+                                    <label class="form-label">About</label>
+                                    <input type="text" name="about" class="input about"onkeyup="GenerateCV()">
+                                </div>
+                                <div class="form-elem">
+                                    <label class="form-label">Your Image</label>
+                                    <input type="file" name="image" class="input image" accept="image/*" onchange="previewImage()">
+                                </div>
+                            </div>
+                        </div>
+                </div>
+                <div class="form-div">
+                    <div class="title">
+                        <h3>Contact</h3>
+                    </div>
+                    <div class="box contact">
+                        <div class="col2">
+                          <div class="form-elem">
+                            <label class="form-label">Phone Number</label>
+                            <input type="text" name="phoneno" class="input phoneno" onkeyup="GenerateCV()" placeholder="+92 12345678">
+                          </div>
+                          <div class="form-elem">
+                            <label class="form-label">Email</label>
+                            <input type="text" name="email" class="input email" onkeyup="GenerateCV()" placeholder="fiza@gmail.com">
+                          </div>
+                        </div>
+                        <div class="col2">
+                          <div class="form-elem">
+                            <label class="form-label">Linkedin</label>
+                            <input type="url" name="linkeidn" class="input linkedin" onkeyup="GenerateCV()" placeholder="linkedin url">
+                          </div>
+                          <div class="form-elem">
+                            <label class="form-label">GitHub</label>
+                            <input type="url" name="github" class="input github" onkeyup="GenerateCV()" placeholder="github url">
+                          </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-div">
+                    <div class="title">
+                      <h3>Education</h3>
+                    </div>
+                    <div id="education-container">
+                      <div class="box education">
+                        <div class="col3">
+                          <div class="form-elem">
+                            <label class="form-label">Degree</label>
+                            <input type="text" name="edu-degree" class="input edu-degree" placeholder="CA" onkeyup="GenerateCV()">
+                          </div>
+                          <div class="form-elem">
+                            <label class="form-label">School</label>
+                            <input type="text" name="edu-school" class="input edu-school" placeholder="XYZ School" onkeyup="GenerateCV()">
+                          </div>
+                          <div class="form-elem">
+                            <label class="form-label">Date</label>
+                            <input type="text" name="edu-date" class="input edu-date" placeholder="2020-2022" onkeyup="GenerateCV()">
+                          </div>
+                        </div>
+                        <div class="col2">
+                          <div class="form-elem">
+                            <label class="form-label">Description</label>
+                            <input type="text" name="edu-description" class="input edu-description" onkeyup="GenerateCV()">
+                          </div>
+                        </div>
+                        <button type="button" class="remove-education remove-btn" onclick="removeEducation(this)">-</button>
+                      </div>
+                    </div>
+                    <button type="button" onclick="addEducation()" class="add-btn">+</button>
+                  </div>
+                  
+                <div class="form-div">
+                    <div class="title">
+                        <h3>Work Experience</h3>
+                    </div>
+                    <div id="experience-container">
+                          <div class="box experience">
+                                <div class="col3">
+                                   <div class="form-elem">
+                                    <label class="form-label">Role</label>
+                                    <input type="text" name="exp-role" class="input exp-role" placeholder="Frontend Developer" onkeyup="GenerateCV()">
+                                   </div>
+                                   <div class="form-elem">
+                                    <label class="form-label">Organization</label>
+                                    <input type="text" name="exp-organization" class="input exp-organization" placeholder="XYZ company" onkeyup="GenerateCV()">
+                                   </div>
+                                   <div class="form-elem">
+                                    <label class="form-label">Date</label>
+                                    <input type="text" name="exp-date" class="input exp-date" placeholder="2020-2022" onkeyup="GenerateCV()">
+                                   </div>
+                                </div>
+                                <div class="col2">
+                                    <div class="form-elem">
+                                        <label class="form-label">Description</label>
+                                        <input type="text" name="exp-description" class="input exp-description" onkeyup="GenerateCV()">
+                                    </div>
+                                </div>
+                                <button type="button" class="remove-experience remove-btn" onclick="removeExperience(this)">-</button>
+                        </div>
+                        <button type="button" onclick="addExperience()"class="add-btn">+</button>
+                    </div>
+                </div>
+                <div class="form-div skill">
+                    <div class="title">
+                        <h3>Skills</h3>
+                    </div> 
+                    <div id="skills-container">
+                                <div class="box skills">
+                                <div class="col3">
+                                   <div class="form-elem">
+                                    <label class="form-label">Skills</label>
+                                    <input type="text" name="skills" class="input skills" placeholder="Frontend Developer" onkeyup="GenerateCV()">
+                                   </div>
+                                </div>
+                                <button type="button" class="remove-btn" onclick="removeSkills(this)">-</button>
+                           </div>
+                      </div>
+                      <button type="button"class="add-btn" onclick="addSkills()">+</button>
+                </div>
+            </div>
+            </form>
+        </div>
+    </section>
+    
+    <div class="color-switcher">
+      <div class="switch-btn">
+        <i class="fa-solid fa-gear"></i>
+      </div>
+      <div class="changing">
+       <h3 id="color">Change Colors</h3>
+      <div class="color-changer">
+      <label for="topColorPicker">Top</label>
+        <input type="color"  id="topColorPicker" class="color-picker">
+      <label for="colorPicker">Bottom Left</label>
+        <input type="color"  id="colorPicker" class="color-picker">
+    </div>
+  </div>
+  </div>
+    <section class="preview-sec">
+      <div class="preview">
+        <div class="preview-container">
+            <div class="top">
+                <div class="top-left-sec">
+                    <div class="preview-box">
+                    <div class="preview-img">
+                        <img src="" alt="" id="image_dsp">
+                    </div>
+                </div>
+                </div>
+                <div class="top-right-sec">
+                    <div class="preview-box personalInfo">
+                    <div class="preview-item">
+                       <span class="item-value" id="fullname_dsp"></span>
+                    </div>
+                    <div class="preview-item">
+                        <span class="item-value" id="designation_dsp"></span>
+                    </div>
+                    <div class="preview-item">
+                        <span class="item-value" id="about_dsp"></span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="bottom">
+                <div class="bottom-left-sec">
+                  <div class="preview-box contact-details">
+                    <div class="preview-title ">
+                        <h2 id="heading">Contact Me</h2>
+                    </div>
+                    <div class="preview-list contact">
+                        <div class="preview-item contact-item">
+                            <i class="fa-solid fa-phone"></i>
+                            <span class="item-value" id="phoneno_dsp"></span>
+                        </div>
+                        <div class="preview-item contact-item">
+                            <i class="fa-solid fa-envelope"></i>
+                            <span class="item-value" id="email_dsp"></span>
+                        </div>
+                        <div class="preview-item contact-item">
+                            <i class="fa-brands fa-linkedin"></i>
+
+                            <!-- link -->
+                            <span class="item-value" id="linkedin_dsp"></span>
+                            
+                        </div>
+                        <div class="preview-item contact-item">
+                            <i class="fa-brands fa-github"></i>
+                            <span class="item-value" id="github_dsp"></span>
+                        </div>
+                    </div>
+                  </div>
+                  <div class="preview-box skills-box">
+                    <div class="preview-title ">
+                        <h2 id="heading" >Skills</h2>
+                    </div>
+                    <ul class="skills-list" id="skills_dsp"></ul>
+                  </div>  
+                  
+                </div>
+                <div class="bottom-right-sec">
+                    <div class="preview-box">
+                         <div class="preview-title">
+                            <h2>Education</h2>
+                         </div>
+                        <div class="education-items" id="edu_dsp"></div>
+                    </div>
+                    <div class="preview-box">
+                        <div class="preview-title">
+                           <h2 id="work">Work Experience</h2>
+                        </div>
+                       <div class="experience-items" id="exp_dsp"></div>
+                   </div>
+                </div>
+            </div>
+        </div>
+      </div>
+    </section>
+<section class="button-sec">
+      
+      <div class="generate-btn">
+         <button id="generateResume" class="btn">Generate Resume URL</button>
+      </div>
+
+      <div id="toastBox"></div>
+
+      <div id="button-box" class="hidden">
+            <p id="para">Your resume URL: <span id="resumeLink"></span></p>
+          <div class="button-div">
+            <button id="copyLink" class="btn">Copy Link</button>
+            <button id="download" class="btn">Download</button>
+         </div>
+    </div>
+</section>
+    
+
+<footer>
+      <div class="footer">
+        <h3>Made by ❤ FIZA RAFAKAT</h3>
+      </div>
+</footer>
+
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.9.3/html2pdf.bundle.min.js"></script>
+
+      <script src="script.js"></script>
+    </body>
+</html>
